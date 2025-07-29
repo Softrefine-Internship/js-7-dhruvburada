@@ -182,7 +182,7 @@ const showResult = () => {
 
 const onNext = () => {
   currentQue++;
-
+  updateProgress();
   if (currentQue === totalQue) {
     nextBtn.textContent = "Submit Quiz";
   }
