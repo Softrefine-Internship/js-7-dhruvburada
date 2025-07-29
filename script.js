@@ -18,6 +18,9 @@ const options = select("#options-list");
 const nextBtn = select("#next-btn");
 const result = select("#final-score");
 const playAgainBtn = select("#restart-btn");
+const progressFill = select("#progress-fill");
+const scoreDisplay = select("#score-display");
+const loadingSpinner = select("#loading-spinner");
 
 let apiURL;
 let totalQue = 0;
@@ -30,7 +33,7 @@ const fetchCategories = async () => {
   try {
     const response = await fetch("https://opentdb.com/api_category.php");
     const data = await response.json();
-    return data.trivia_categories; // return the actual array
+    return data.trivia_categories;
   } catch (err) {
     console.error("Error fetching categories:", err);
     return [];
@@ -87,6 +90,7 @@ const loadOptions = () => {
     wrapper.classList.add("option-wrapper");
     wrapper.appendChild(optionElement);
     wrapper.appendChild(labelElement);
+
     optionElement.addEventListener("change", validateAnswer);
 
     options.appendChild(wrapper);
@@ -109,6 +113,7 @@ const validateAnswer = () => {
   const inputs = document.querySelectorAll(
     `input[name="question-${currentQue}"]`
   );
+
   inputs.forEach((input) => {
     const label = document.querySelector(`label[for="${input.id}"]`);
 
@@ -156,6 +161,11 @@ const updateQuestionCount = () => {
   questionCount.innerHTML = `Question ${currentQue}/${totalQue}`;
 };
 
+const updateProgress = () => {
+  const progress = ((currentQue - 1) / totalQue) * 100;
+  progressFill.style.width = `${progress}%`;
+};
+
 const changeQuestion = () => {
   question.innerHTML = quizData[currentQue - 1].question;
   loadOptions();
@@ -166,6 +176,7 @@ const showResult = () => {
   quizSection.classList.remove("active");
   resultSection.classList.add("active");
   result.innerHTML = `Your final score is ${score} out of ${totalQue}`;
+  scoreDisplay.innerHTML = `${score}/${totalQue}`;
 };
 
 const onNext = () => {
