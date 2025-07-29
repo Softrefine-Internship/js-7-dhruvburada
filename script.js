@@ -18,6 +18,7 @@ const options = select("#options-list");
 const nextBtn = select("#next-btn");
 const result = select("#final-score");
 const playAgainBtn = select("#restart-btn");
+const quitBtn = select("#quit-btn");
 const progressFill = select("#progress-fill");
 const scoreDisplay = select("#score-display");
 const loadingSpinner = select("#loading-spinner");
@@ -202,3 +203,5 @@ nextBtn.addEventListener("click", onNext);
 playAgainBtn.addEventListener("click", () => {
   window.location.reload();
 });
+
+quitBtn.addEventListener("click", showResult);

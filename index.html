@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="./script.js" defer></script>
   </head>
+
   <body>
- <body>
     <div class="container">
-      <!-- Screen 1: Quiz Options -->
+      <!-- Quiz Options -->
       <section id="screen-options" class="screen active">
         <h1>🧠 Customize Your Quiz</h1>
         <form id="quiz-options-form">
@@ -42,7 +42,7 @@
                 <option value="">Any Category</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="long-formgroup">
               <label for="type">Type:</label>
               <select name="type" id="type">
                 <option value="">Any</option>
@@ -51,12 +51,12 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn submit-btn">🚀 Start Quiz</button>
+          <button type="submit" class="btn submit-btn">Start Quiz</button>
           <div class="loading-spinner" id="loading-spinner"></div>
         </form>
       </section>
 
-      <!-- Screen 2: Quiz Questions -->
+      <!-- Quiz Questions -->
       <section id="screen-quiz" class="screen">
         <div class="progress-bar">
           <div class="progress-fill" id="progress-fill"></div>
@@ -68,17 +68,20 @@
           <h2 id="question-text">Question text goes here</h2>
           <ul id="options-list"></ul>
         </div>
-        <button id="next-btn" class="btn">Next Question</button>
+        <div class="button-container">
+          <button id="quit-btn" class="btn-secondary">Quit</button>
+          <button id="next-btn" class="btn">Next Question</button>
+        </div>
       </section>
 
-      <!-- Screen 3: Results -->
+      <!--  Results -->
       <section id="screen-result" class="screen result-screen">
         <h1>🎉 Quiz Complete!</h1>
         <div class="score-circle" id="score-circle">
           <span id="score-display">0/5</span>
         </div>
         <p id="final-score">Calculating your score...</p>
-        <button id="restart-btn" class="btn">🔄 Play New Quiz</button>
+        <button id="restart-btn" class="btn">Play New Quiz</button>
       </section>
     </div>
   </body>
