@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Quiz App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Screen 1: Quiz Options -->
+      <section id="screen-options" class="screen active">
+        <h1>Customize Your Quiz</h1>
+        <form id="quiz-options-form">
+          <label>
+            Number of Questions:
+            <input
+              type="number"
+              name="amount"
+              id="amount"
+              min="1"
+              max="50"
+              value="5"
+              required
+            />
+          </label>
+          <label>
+            Category:
+            <select name="category" id="category" size="5">
+              <option value="">Any Category</option>
+            </select>
+          </label>
+          <label>
+            Difficulty:
+            <select name="difficulty" id="difficulty">
+              <option value="">Any</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <label>
+            Type:
+            <select name="type" id="type">
+              <option value="">Any</option>
+              <option value="multiple">Multiple Choice</option>
+              <option value="boolean">True / False</option>
+            </select>
+          </label>
+          <button type="submit" class="btn submit-btn">Start Quiz</button>
+        </form>
+      </section>
+
+      <!-- Screen 2: Quiz Questions -->
+      <section id="screen-quiz" class="screen">
+        <div class="quiz-header">
+          <span id="question-count">Question 1/5</span>
+        </div>
+        <div class="question-container">
+          <h2 id="question-text">Question text goes here</h2>
+          <ul id="options-list"></ul>
+        </div>
+        <div id="feedback"></div>
+        <button id="next-btn" class="btn">Next Question</button>
+      </section>
+
+      <!-- Screen 3: Results -->
+      <section id="screen-result" class="screen">
+        <h1>Your Quiz Result</h1>
+        <p id="final-score">You scored 0 out of 5</p>
+        <button id="restart-btn" class="btn">Play New Quiz</button>
+      </section>
+    </div>
+  </body>
 </html>
