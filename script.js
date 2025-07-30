@@ -28,6 +28,7 @@ let totalQue = 0;
 let currentQue = 1;
 let quizData;
 let score = 0;
+let isSelected = false;
 
 // Fetch quiz categories from API
 const fetchCategories = async () => {
@@ -106,11 +107,9 @@ const validateAnswer = () => {
   const correct = quizData[currentQue - 1].correct_answer;
 
   if (!selected) {
-    alert("Please select an answer.");
-    nextBtn.disabled = true;
     return false;
   }
-
+  nextBtn.textContent = "Next";
   const inputs = document.querySelectorAll(
     `input[name="question-${currentQue}"]`
   );
@@ -132,7 +131,6 @@ const validateAnswer = () => {
   if (selected.value === correct) {
     score++;
   }
-
   return true;
 };
 
@@ -182,6 +180,7 @@ const showResult = () => {
 
 const onNext = () => {
   currentQue++;
+  nextBtn.textContent = "SKIP";
   updateProgress();
   if (currentQue === totalQue) {
     nextBtn.textContent = "Submit Quiz";
